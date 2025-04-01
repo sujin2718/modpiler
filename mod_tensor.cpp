@@ -3,7 +3,8 @@
 #include <iostream>
 namespace modpiler {
 
-MTensor::MTensor(std::vector<int> shape, void* ptr) {
+MTensor::MTensor(const std::string& name, std::vector<int> shape, void* ptr)
+    : MElem(name) {
     this->shape = shape;
     this->ptr = ptr;
     // for now , just 4 byte ...

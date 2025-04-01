@@ -11,6 +11,6 @@ void MNode::AddParent(s_ptr<MNode> parent) { this->parents.push_back(parent); }
 // todo: child -> input is this node's output. 
 void MNode::AddChildren(s_ptr<MNode> child) { this->children.push_back(child); }
 
-void MNode::Execute() { this->op->Run(); }
+void MNode::Execute() { ;}
 
 };  // namespace modpiler

@@ -7,7 +7,7 @@
 
 namespace modpiler {
 
-class MTensor {
+class MTensor : public MElem {
    private:
     std::vector<int> shape;   // element number
     std::vector<int> stride;  // element stride
@@ -15,7 +15,7 @@ class MTensor {
 
    public:
     // make tensor with zero ... constructor
-    MTensor(std::vector<int> shape, void *ptr);
+    MTensor(const std::string& name, std::vector<int> shape, void* ptr);
 
     void PrintInfo();
 };

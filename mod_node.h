@@ -6,16 +6,14 @@
 
 #include "mod_define.h"
 #include "mod_elem.h"
-#include "mod_op.h"
 
 namespace modpiler {
 
 class MNode : public MElem {
-   private:
+   protected:
     std::vector<s_ptr<MNode>> parents;
     std::vector<s_ptr<MNode>> children;
 
-    s_ptr<MOp> op;
    public:
     const std::vector<s_ptr<MNode>>& GetParents();
     const std::vector<s_ptr<MNode>>& GetChilderen();
@@ -24,7 +22,10 @@ class MNode : public MElem {
     void AddChildren(s_ptr<MNode> child);
 
     MNode(const std::string& name) : MElem(name) {}
-    void Execute();
+    // execute?? 
+    virtual void Execute() = 0;
+    // visitor pattern
+    virtual void Visit() = 0;
 };
 
 };  // namespace modpiler

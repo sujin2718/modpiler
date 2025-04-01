@@ -1,8 +1,8 @@
-#include "onnx.pb.h"
-
 #include <fstream>
 #include <string>
 #include <vector>
+
+#include "onnx.pb.h"
 
 void TraverseONNXGraph(const onnx::GraphProto& graph) {
     // Print basic graph info
@@ -36,7 +36,8 @@ void TraverseONNXGraph(const onnx::GraphProto& graph) {
     std::cout << "\nInitializers:" << std::endl;
     for (const auto& initializer : graph.initializer()) {
         std::cout << "  Initializer Name: " << initializer.name() << std::endl;
-        std::cout << "  Tensor Data Type: " << initializer.data_type() << std::endl;
+        std::cout << "  Tensor Data Type: " << initializer.data_type()
+                  << std::endl;
         std::cout << "  Tensor Dimensions: ";
         for (const auto& dim : initializer.dims()) {
             std::cout << dim << " ";
@@ -74,15 +75,15 @@ void PrintTensorShape(const onnx::TensorShapeProto& shape) {
     std::cout << std::endl;
 }
 int ReadOnnx(const std::string& filename) {
-
     std::ifstream file(filename, std::ios::binary);
 
-    if(!file.is_open()) {
+    if (!file.is_open()) {
         std::cerr << "Failed to open ONNX File!" << std::endl;
         return -1;
     }
 
-    std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    std::vector<char> buffer((std::istreambuf_iterator<char>(file)),
+                             std::istreambuf_iterator<char>());
 
     onnx::ModelProto model;
     if (!model.ParseFromArray(buffer.data(), buffer.size())) {

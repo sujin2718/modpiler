@@ -5,8 +5,5 @@
 namespace modpiler {
 
 
-void MAddOp::Run() {
-    std::cout << "Add operator" << std::endl;
-}
 
 };
